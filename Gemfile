@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 
 gem "letter_opener"
 gem 'will_paginate', '~> 4.0'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

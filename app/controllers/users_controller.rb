@@ -2,15 +2,15 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create, :destroy, :update]
 
   def index
-   @users = User.page(params[:page]).order(created_at: :desc)
-   render json: { total: User.all.size, users: @users } , status: :ok
+   @users = User.page(params[:page])
+   render json: @users, each_serializer: UsersSerializer
   end
 
   def show
     @user = User.find_by(id: params[:id])
 
     if @user.present?
-      render json: @user, status: :ok
+      render json: @user, serializer: UsersSerializer
     else
       render json: "User not found", status: :not_found
     end
